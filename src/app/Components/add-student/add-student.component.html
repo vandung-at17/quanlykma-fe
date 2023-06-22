@@ -1,0 +1,116 @@
+<div class="container-xl px-4 mt-4">
+  <!-- Account page navigation-->
+  <nav class="nav nav-borders">
+    <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details"
+      target="__blank">Profile</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page"
+      target="__blank">Billing</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page"
+      target="__blank">Security</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page"
+      target="__blank">Notifications</a>
+  </nav>
+  <hr class="mt-0 mb-4">
+  <div class="row">
+    <div class="col-xl-4">
+      <!-- Profile picture card-->
+      <div class="card mb-4 mb-xl-0">
+        <div class="card-header">Profile Picture</div>
+        <div class="card-body text-center">
+          <!-- Profile picture image-->
+          <img class="img-account-profile rounded-circle mb-2" [src]="url"
+            alt="">
+          <!-- Profile picture help block-->
+          <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+          <!-- Profile picture upload button-->
+          <button class="btn btn-primary" type="button">Upload new image</button>
+          <br>
+          <input  class="btn btn-primary" type="file" (change)="onSelectFile($event)">
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8">
+      <!-- Account details card-->
+      <div class="card mb-4">
+        <div class="card-header">Account Details</div>
+        <div class="card-body">
+          <form [formGroup]="profileStudentForm" (ngSubmit)="onSubmit()">
+            <!-- Form Group (username)-->
+            <div class="mb-3">
+              <label class="small mb-1" for="inputUsername">
+                <mat-label>Họ và Tên Học Sinh (Nhập đầy đủ tên của sinh viên)</mat-label>
+              </label>
+              <input matInput class="form-control" id="inputUsername" type="text" formControlName="fullName"
+                placeholder="Enter your username" value="username">
+            </div>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (birthday)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                <!-- <input class="form-control" id="inputBirthday" type="text" formControlName="birthday" name="birthday"
+                  placeholder="Enter your birthday" value="06/10/1988"> -->
+                  <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthday" name="birthday" id="inputBirthday">
+                    <mat-hint>YYYY/MM/DD</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+              </div>
+              <!-- Form Group (Giới Tính)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputLastName">Giới Tính</label>
+                <br>
+                <div class="form-control">
+                  <input type="radio" name="gender" formControlName="sex" value="true"> Nam
+                  &emsp;
+                  <input type="radio" name="gender" formControlName="sex" value="false"> Nữ
+                </div>
+              </div>
+            </div>
+            <!-- Form Row        -->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (Tuổi)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputOrgName">Tuổi</label>
+                <input class="form-control" id="inputOrgName" type="number" formControlName="age"
+                  placeholder="Enter your Age" value="Start Bootstrap">
+              </div>
+              <!-- Form Group (location)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                <input class="form-control" id="inputEmailAddress" type="email" formControlName="email"
+                  placeholder="Enter your email address" value="name@example.com">
+              </div>
+            </div>
+            <!-- Form Row        -->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (Majors)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputOrgName">Ngành Học</label>
+                <input class="form-control" id="inputOrgName" type="text" formControlName="majors"
+                  placeholder="Enter your Majors" value="Start Bootstrap">
+              </div>
+              <!-- Form Group (phone number)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputPhone">Phone number</label>
+                <input class="form-control" id="inputPhone" type="tel" formControlName="phone"
+                  placeholder="Enter your phone number" value="555-123-4567">
+              </div>
+            </div>
+            <!-- Form Group ()-->
+            <div class="mb-3">
+              <label class="small mb-1" for="inputEmailAddress">Giới Thiệu Bản Thân</label>
+              <input class="form-control" id="inputEmailAddress" type="textarea" formControlName="introduce"
+                placeholder="Enter your Introduce" value="Một đoạn ngắn mô tả về bản phân">
+            </div>
+
+            <!-- Save changes button-->
+            <button class="btn btn-primary" type="submit">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

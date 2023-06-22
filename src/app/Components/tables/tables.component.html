@@ -1,0 +1,118 @@
+<div class="inner_page tables_page">
+  <!-- dashboard inner -->
+  <div class="midde_cont">
+    <div class="container-fluid">
+      <div class="row column_title">
+        <div class="col-md-12">
+          <div class="page_title">
+            <h2>Tables</h2>
+          </div>
+        </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+        <!-- table section -->
+        <div class="col-md-12">
+          <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head card shadow mb-4">
+              <div class="heading1 margin_0">
+                <h2>Danh Sách Sinh Viên</h2>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12 col-md-5">
+                  <div class="dataTables_length" id="dataTable_length">
+                    <label>Show
+                      <select name="dataTable_length" aria-controls="dataTable" (change)="changeNumbeRentries($event)"
+                        class="custom-select custom-select-sm form-control form-control-sm">
+                        <option *ngFor="let item of selectNumbeRentries" value="" value="{{item}}">{{item}}</option>
+                      </select> entries
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div id="dataTable_filter" class="dataTables_filter">
+                    <label>Search:
+                      <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"
+                        [(ngModel)]="search" (keyup)="onKey($event)">
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="table_section padding_infor_info">
+              <div class="table-responsive-sm">
+                <table class="table table-bordered table-hover table-striped">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>ID</th>
+                      <th>Họ và Tên</th>
+                      <th>Sex</th>
+                      <th>Ngày Sinh</th>
+                      <th>Age</th>
+                      <th>Ngành Học</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of students; let i = index">
+                      <td>{{item.id}}</td>
+                      <td>{{item.fullName}}</td>
+                      <td>{{item.sex}}</td>
+                      <td>{{item.birthday| date}}</td>
+                      <td>{{item.age}}</td>
+                      <td>{{item.majors}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.phone}}</td>
+                      <td>{{item.status}}</td>
+                      <td>
+                        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="editStudent(item.id)">
+                          <mat-icon aria-label="Edit">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+                          <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12 col-md-5">
+                  <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of
+                    {{totalItem}} entries</div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <nz-pagination [nzPageIndex]="1" [nzTotal]="500"></nz-pagination>
+                  <!-- <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#"
+                          aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                      <li class="paginate_button page-item active"><a aria-controls="dataTable" data-dt-idx="1"
+                          tabindex="0" class="page-link">1</a></li>
+                      <li class="paginate_button page-item "><a aria-controls="dataTable" data-dt-idx="2"
+                          tabindex="0" class="page-link">2</a></li>
+                      <li class="paginate_button page-item " >
+                        <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                      </li>
+                      <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                          aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-main-footer></app-main-footer>
+  </div>
+</div>
